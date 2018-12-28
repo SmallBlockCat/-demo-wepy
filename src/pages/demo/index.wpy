@@ -1,0 +1,374 @@
+<style lang="less">
+	.demo{
+		background:#eeeeee;
+		height:100vh;
+		overflow: scroll;
+		padding-left:20rpx;
+		padding-right:20rpx;
+		padding-top:20rpx;
+	}
+	.cntent{
+		.head{
+			padding-left:30rpx;
+			padding-right:30rpx;
+			margin-bottom:30rpx;
+			position:relative;
+			background:#fff;
+			z-index:10;
+			.head_text{
+				display:flex;
+				justify-content: space-between;
+				height:88rpx;
+				line-height:88rpx;
+				align-items:center;
+			}
+			image{
+				width:48rpx;
+				height:48rpx;
+			}
+			.view_content{
+				background:#fff;
+				padding-left:20rpx;
+				padding-right:20rpx;
+				height:0;
+				overflow:hidden;
+				transition: all 0.5s;
+			    -moz-transition: all 0.5s; /* Firefox 4 */
+			    -webkit-transition: all 0.5s; /* Safari 和 Chrome */
+			    -o-transition: all 0.5s;
+				view{
+					border-bottom:1rpx solid #e1e1e1;
+					height:88rpx;
+					line-height:88rpx;
+					display:flex;
+					justify-content: space-between;
+					align-items:center;
+					image{
+						width:30rpx;
+						height:30rpx;
+					}
+				}
+			}
+			.view_show1{
+				height:440rpx;
+			}
+			.view_show2{
+				height:352rpx;
+			}
+			.view_show3{
+				height:880rpx;
+			}
+			.view_show4{
+				height:88rpx;
+			}
+			.view_show5{
+				height:352rpx;
+			}
+			.view_show6{
+				height:88rpx;
+			}
+			.view_show7{
+				height:88rpx;
+			}
+			.view_show8{
+				height:264rpx;
+			}
+		}
+	}
+</style>
+<template>
+	<view class="demo">
+		<!--<view class="head">小程序组件展示demo</view>-->
+		<view class="cntent">
+			<view class="head">
+				<view class="head_text" @tap="openView1">
+					<view>视图容器</view>
+					<image mode="widthFix" src="../../img/content.png"/>
+				</view>
+				<view class="view_content {{isShow1?'view_show1':''}}">
+					<view @tap="toDetiale('view')">
+						<view>view</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('scrollView')">
+						<view>scroll-view</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('swiper')">
+						<view>swiper</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('movableView')">
+						<view>movable-view</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('coverView')">
+						<view>cover-view</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+				</view>
+			</view>
+			<view class="head">
+				<view class="head_text" @tap="openView2">
+					<view>基础内容</view>
+					<image mode="widthFix" src="../../img/T.png"/>
+				</view>
+				<view class="view_content {{isShow2?'view_show2':''}}">
+					<view @tap="toDetiale('text')">
+						<view>text</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('icon')">
+						<view>icon</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('progress')">
+						<view>progress</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('richText')">
+						<view>rich-text</view>
+						<image src="../../img/jiantou.png" />
+					</view>
+				</view>
+			</view>
+			<view class="head">
+				<view class="head_text" @tap="openView3">
+					<view>表单组件</view>
+					<image mode="widthFix" src="../../img/nav.png"/>
+				</view>
+				<view class="view_content {{isShow3?'view_show3':''}}">
+					<view @tap="toDetiale('button')">
+						<view>button</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('checkbox')">
+						<view>checkbox</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('form')">
+						<view>form</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('input')">
+						<view>input</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('label')">
+						<view>label</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('picker')">
+						<view>picker</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('radio')">
+						<view>radio</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('slider')">
+						<view>slider</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('textares')">
+						<view>textares</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+				</view>
+			</view>
+			<view class="head">
+				<view class="head_text" @tap="openView4">
+					<view>导航</view>
+					<image mode="widthFix" src="../../img/dian.png"/>
+				</view>
+				<view class="view_content {{isShow4?'view_show4':''}}">
+					<view @tap="toDetiale('navigator')">
+						<view>navigator</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+				</view>
+			</view>
+			<view class="head">
+				<view class="head_text" @tap="openView5">
+					<view>媒体组件</view>
+					<image mode="widthFix" src="../../img/san.png"/>
+				</view>
+				<view class="view_content {{isShow5?'view_show5':''}}">
+					<view @tap="toDetiale('image')">
+						<view>image</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('audio')">
+						<view>audio</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('video')">
+						<view>video</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view @tap="toDetiale('camera')">
+						<view>camera</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+				</view>
+			</view>
+			<view class="head">
+				<view class="head_text" @tap="openView6">
+					<view>地图</view>
+					<image mode="widthFix" src="../../img/map.png"/>
+				</view>
+				<view class="view_content {{isShow6?'view_show6':''}}">
+					<view @tap="toDetiale('map')">
+						<view>map</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+				</view>
+			</view>
+			<view class="head">
+				<view class="head_text" @tap="openView7">
+					<view>画布</view>
+					<image mode="widthFix" src="../../img/line.png"/>
+				</view>
+				<view class="view_content {{isShow7?'view_show7':''}}">
+					<view @tap="toDetiale('canvas')">
+						<view>canvas</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+				</view>
+			</view>
+			<view class="head">
+				<view class="head_text" @tap="openView8">
+					<view>开放能力</view>
+					<image mode="widthFix" src="../../img/kuo.png"/>
+				</view>
+				<view class="view_content {{isShow8?'view_show8':''}}">
+					<view @tap="toDetiale('ad')">
+						<view>ad</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view>
+						<view>open-data</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+					<view>
+						<view>web-view</view>
+						<image src="../../img/jiantou.png"/>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+   components = {};
+   data = {
+   	isShow1:false,
+   	isShow2:false,
+   	isShow3:false,
+   	isShow4:false,
+   	isShow5:false,
+   	isShow6:false,
+   	isShow7:false,
+   	isShow8:false
+   };
+   computed = {};
+   methods = {
+   	openView1(){
+   		this.isShow1 = !this.isShow1;
+   		this.isShow2 = false;
+   		this.isShow3 = false;
+   		this.isShow4 = false;
+   		this.isShow5 = false;
+   		this.isShow6 = false;
+   		this.isShow7 = false;
+   		this.isShow8 = false;
+   	},
+   	openView2(){
+   		this.isShow1 = false;
+   		this.isShow2 = !this.isShow2;
+   		this.isShow3 = false;
+   		this.isShow4 = false;
+   		this.isShow5 = false;
+   		this.isShow6 = false;
+   		this.isShow7 = false;
+   		this.isShow8 = false;
+   	},
+   	openView3(){
+   		this.isShow1 = false;
+   		this.isShow2 = false;
+   		this.isShow3 = !this.isShow3;
+   		this.isShow4 = false;
+   		this.isShow5 = false;
+   		this.isShow6 = false;
+   		this.isShow7 = false;
+   		this.isShow8 = false;
+   	},
+   	openView4(){
+   		this.isShow1 = false;
+   		this.isShow2 = false;
+   		this.isShow3 = false;
+   		this.isShow4 = !this.isShow4;
+   		this.isShow5 = false;
+   		this.isShow6 = false;
+   		this.isShow7 = false;
+   		this.isShow8 = false;
+   	},
+   	openView5(){
+   		this.isShow1 = false;
+   		this.isShow2 = false;
+   		this.isShow3 = false;
+   		this.isShow4 = false;
+   		this.isShow5 = !this.isShow5;
+   		this.isShow6 = false;
+   		this.isShow7 = false;
+   		this.isShow8 = false;
+   	},
+   	openView6(){
+   		this.isShow1 = false;
+   		this.isShow2 = false;
+   		this.isShow3 = false;
+   		this.isShow4 = false;
+   		this.isShow5 = false;
+   		this.isShow6 = !this.isShow6;
+   		this.isShow7 = false;
+   		this.isShow8 = false;
+   	},
+   	openView7(){
+   		this.isShow1 = false;
+   		this.isShow2 = false;
+   		this.isShow3 = false;
+   		this.isShow4 = false;
+   		this.isShow5 = false;
+   		this.isShow6 = false;
+   		this.isShow7 = !this.isShow7;
+   		this.isShow8 = false;
+   	},
+   	openView8(){
+   		this.isShow1 = false;
+   		this.isShow2 = false;
+   		this.isShow3 = false;
+   		this.isShow4 = false;
+   		this.isShow5 = false;
+   		this.isShow6 = false;
+   		this.isShow7 = false;
+   		this.isShow8 = !this.isShow8;
+   	},
+   	toDetiale(name){
+   		wx.navigateTo({
+	        url: `/pages/${name}/index`, //跳转页面的路径，可带参数 ？隔开，不同参数用 & 分隔；相对路径，不需要.wxml后缀
+	        success: function() {}, //成功后的回调；
+	        fail: function() {}, //失败后的回调；
+	        complete: function() {} //结束后的回调(成功，失败都会执行)
+      	});
+   	}
+   };
+   onShow() {}
+   onLoad() {
+  	this.$apply();
+  }
+}
+</script>

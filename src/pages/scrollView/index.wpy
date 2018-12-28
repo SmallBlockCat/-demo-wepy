@@ -1,0 +1,56 @@
+<style lang="less">
+	.scroll_view{
+		padding-left:30rpx;
+		padding-right:30rpx;
+		.head{
+			margin-bottom:30rpx;
+		}
+		.text1{
+			width:630rpx;
+			height:300rpx;
+			color:#fff;
+			display:inline-block;
+		}
+		.content{
+			width:630rpx;
+			height:300rpx;
+			overflow-x: scroll;
+			white-space:nowrap;
+		}
+	}
+</style>
+<template>
+	<view class="scroll_view">
+		<view>Vertical Scroll</view>
+		<view class="head">纵向滚动</view>
+		<scroll-view scroll-y style="height:150px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+			<view class="text1" style="background:#00CD66">A</view>
+			<view class="text1" style="background:#00C5CD">B</view>
+			<view class="text1" style="background:#DCDCDC">C</view>
+		</scroll-view>
+		<view>Horizontal Scroll</view>
+		<view class="head">横向滚动</view>
+		<view class="content">
+			<scroll-view class="scrollx" scroll-x bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+				<view class="text1" style="background:#00CD66"><image src="../../img/timg.jpg"/></view>
+				<view class="text1" style="background:#00C5CD"><image src="../../img/timg.jpg"/></view>
+				<view class="text1" style="background:#DCDCDC"><image src="../../img/timg.jpg"/></view>
+			</scroll-view>
+		</view>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  };
+  computed = {};
+  methods = {};
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

@@ -1,0 +1,50 @@
+<style lang="less">
+	.demo1{
+		image{
+			width:100%;
+			height:auto;
+			margin-top:-10rpx;
+		}
+		.icon_move{
+			width:100rpx;
+			height:100rpx;
+			line-height:100rpx;
+			border:1rpx solid #e1e1e1;
+			background:rgba(225,225,225,.5);
+			color:#000000;
+			text-align:center;
+			border-radius:50%;
+		}
+	}
+</style>
+<template>
+	<view class="demo1">
+		<repeat for="{{imageList}}" key="index" index="index" item="item">
+			<image src="{{item}}" mode="widthFix"/>
+		</repeat>
+		<view class="icon_move">
+			客服
+		</view>
+	</view>
+</template>
+<script>
+//import mta from '../.././utils/mta_analysis.js' //腾讯移动统计sdk
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+import {dataInfo} from '../.././utils/data.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  	dataInfo:"",
+  	imageList:"",
+  };
+  computed = {};
+  methods = {};
+  onShow() {}
+  onLoad() {
+  	this.dataInfo = dataInfo;
+  	this.imageList = dataInfo.data.imageList;
+  }
+}
+</script>

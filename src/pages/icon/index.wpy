@@ -1,0 +1,56 @@
+<style lang="less">
+	.head{
+		color:#999;
+		font-size:30rpx;
+		text-align:center;
+		margin:50rpx auto;
+		text-decoration: underline;
+		padding-bottom:20rpx;
+	}
+</style>
+<template>
+	<view>
+		<view class="head">icon</view>
+		<view class="group">
+		  <block wx:for="{{iconSize}}" wx:key="index" index='index' item="item">
+		    <icon type="success" size="{{item}}"/>
+		  </block>
+		</view>
+		
+		<view class="group">
+		  <block wx:for="{{iconType}}" wx:key="index" index='index' item="item">
+		    <icon type="{{item}}" size="40"/>
+		  </block>
+		</view>
+		
+		
+		<view class="group">
+		  <block wx:for="{{iconColor}}" wx:key="index" index='index' item="item">
+		    <icon type="success" size="40" color="{{item}}"/>
+		  </block>
+		</view>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  	iconSize: [20, 30, 40, 50, 60, 70],
+    iconColor: [
+      'red', 'orange', 'yellow', 'green', 'rgb(0,255,255)', 'blue', 'purple'
+    ],
+    iconType: [
+      'success', 'success_no_circle', 'info', 'warn', 'waiting', 'cancel', 'download', 'search', 'clear'
+    ]
+  };
+  computed = {};
+  methods = {
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

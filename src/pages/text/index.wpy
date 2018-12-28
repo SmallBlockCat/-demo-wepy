@@ -1,0 +1,66 @@
+<style lang="less">
+	.text{
+		background:#eee;
+		height:100vh;
+	}
+	.head{
+		color:#999;
+		font-size:30rpx;
+		text-align:center;
+		margin:50rpx auto;
+		text-decoration: underline;
+		padding-bottom:20rpx;
+	}
+	.content{
+		width:630rpx;
+		height:500rpx;
+		overflow:scroll;
+		background:#fff;
+		margin: 0 auto;
+		margin-bottom:30rpx;		
+	}
+	.btn{
+		margin-bottom:30rpx;
+		width:630rpx;
+		text-align:center;
+	}
+</style>
+<template>
+	<view class="text">
+		<view class="head">text</view>
+		<view class="content">
+			<text>{{text}}</text>
+		</view>
+		<button class='btn' @tap="add">add line</button>
+		<button class='btn' @tap="remove">remove line</button>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+var initData = 'this is first line \n this is second line'
+var extraLine = [];
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  	text:initData,
+  };
+  computed = {};
+  methods = {
+  	add(e) {
+	    extraLine.push('other line')
+	    this.text = initData + '\n' + extraLine.join('\n')
+	},
+	remove(e) {
+	    if (extraLine.length > 0) {
+	      	extraLine.pop()
+	        this.text = initData + '\n' + extraLine.join('\n')
+	    }
+	}
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

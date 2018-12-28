@@ -1,0 +1,60 @@
+<style lang="less">
+	.content{
+		width:100%;
+		height:1000rpx;
+		background:#dddddd;
+		.image{
+			width:100%;
+			height:auto;
+			margin-top:-10rpx;
+		}
+	}
+</style>
+<template>
+ 	<view class="section">
+			  <movable-area class="content">
+			    <movable-view style="height: 50px; width: 50px; background: blue;" x="{{x}}" y="{{y}}" direction="all">
+			    </movable-view>
+			    <view>522222</view>
+			    <repeat for="{{imgList}}" key="index" index="index" item="item">
+						<image class="image" src="{{item}}"  mode="widthFix"/>
+					</repeat>
+			  </movable-area>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+import {dataInfo} from '.././utils/data.js';
+
+export default class myorder extends wepy.component {
+  components = {
+  };
+  data = {
+  	x: 0,
+    y: 0,
+    dataInfo:"",
+    imgList:"",
+  };
+  computed = {};
+  methods = {
+//	tap: function(e) {
+//	    this.setData({
+//	      x: 30,
+//	      y: 30
+//	    });
+//	  },
+	  onChange: function(e) {
+	    console.log(e.detail)
+	  },
+	  onScale: function(e) {
+	    console.log(e.detail)
+	  }
+  };
+  onLoad() {
+  	this.dataInfo = dataInfo;
+  	this.imgList = dataInfo.data.img;
+  	this.$apply();
+  }
+}
+</script>

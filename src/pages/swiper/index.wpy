@@ -1,0 +1,112 @@
+<style lang="less">
+	.swiper{
+		.text{
+			width:100%;
+			height:300rpx;
+		}
+		.switch_content{
+			border-top:1rpx solid #e1e1e1;
+			border-bottom:1rpx solid #e1e1e1;
+			padding-left:20rpx;
+			padding-right:20rpx;
+			margin-top:80rpx;
+			margin-bottom:80rpx;
+			.switch1{
+				border-bottom:1rpx solid #e1e1e1;
+			}
+			.switch{
+				height:88rpx;
+				line-height:88rpx;
+				background:#fff;
+				display:flex;
+				align-items:center;
+				justify-content: space-between;
+				font-size:26rpx;
+			}
+		}
+		.duration{
+			font-size:26rpx;
+			color:#999;
+			view{
+				padding-left:100rpx;
+				margin-top:30rpx;
+			}
+		}
+	}
+</style>
+<template>
+	<view class='swiper'>
+		<swiper indicator-dots="{{indicatorDots}}"
+		  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#e1e1e1" indicator-active-color="#999999">
+		  <block wx:for="{{dataInfo}}" wx:key="index" index="index" item="item">
+		    <swiper-item>
+		      <view class="text" style="background:	{{item.color}}">{{item.name}}</view>
+		    </swiper-item>
+		  </block>
+		</swiper>
+		<view class="switch_content">
+			<view class="switch switch1">
+				<view>指示点</view>
+				<switch checked bindchange="switch1Change"/>
+			</view>
+			<view class="switch">
+				<view>自动播放</view>
+				<switch bindchange="switch2Change"/>
+			</view>
+		</view>
+		<view class="duration">
+			<view>幻灯片切换时长(ms)</view>
+			<slider bindchange="intervalChange" show-value min="500" max="2000" block-size="20" block-color="#00EE76"/>
+		</view>
+		<view class="duration">
+			<view>自动播放间隔时长(ms)</view>
+			<slider bindchange="durationChange" show-value min="1000" block-size="20" max="10000" block-color="#00EE76"/>
+		</view>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  	dataInfo:[
+  		{
+  			"name":"A",
+  			"color":"#2E8B57"
+  		},
+  		{
+  			"name":"B",
+  			"color":"#4682B4"
+  		},
+  		{
+  			"name":"C",
+  			"color":"#2E8B57"
+  		},
+  	],
+    indicatorDots:true,
+    autoplay: false,
+    interval: 1500,
+    duration: 1000
+  };
+  computed = {};
+  methods = {
+	  intervalChange(e){
+	  	this.interval = e.detail.value
+	  },
+	  durationChange(e){
+	  	this.duration = e.detail.value
+	  },
+	  switch1Change(e){
+	  	this.indicatorDots = !this.indicatorDots
+	  },
+	  switch2Change(e){
+	  	this.autoplay = !this.autoplay
+	  }
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

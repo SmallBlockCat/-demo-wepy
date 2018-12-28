@@ -1,0 +1,20 @@
+<style lang="less">
+.myorder {
+}
+</style>
+<template>
+  <view class="myorder">
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+export default class myorder extends wepy.component {
+  components = {};
+  data = {};
+  computed = {};
+  methods = {
+  };
+  onLoad() {}
+}
+</script>

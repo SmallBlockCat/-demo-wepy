@@ -1,0 +1,45 @@
+<style lang="less">
+.myorder {
+}
+</style>
+<template>
+ 	<view class="section">
+		  <!--<view class="btn-area">
+		    <button size="mini" bindtap="tap">click me to move to (30px, 30px)</button>
+		  </view>-->
+		  <!--<view class="section__title">movable-view区域大于movable-area</view>-->
+			  <movable-area style="height: 100px; width: 100px; background: red;">
+			    <movable-view style="height: 200px; width: 200px; background: blue;" direction="all">
+			    </movable-view>
+			  </movable-area>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class myorder extends wepy.component {
+  components = {
+  };
+  data = {
+  	x: 0,
+    y: 0
+  };
+  computed = {};
+  methods = {
+//	tap: function(e) {
+//	    this.setData({
+//	      x: 30,
+//	      y: 30
+//	    });
+//	  },
+	  onChange: function(e) {
+	    console.log(e.detail)
+	  },
+	  onScale: function(e) {
+	    console.log(e.detail)
+	  }
+  };
+  onLoad() {}
+}
+</script>

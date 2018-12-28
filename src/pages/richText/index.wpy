@@ -1,0 +1,88 @@
+<style lang="less">
+	.rich{
+		padding-bottom:100rpx;
+	}
+	.head{
+		color:#999;
+		font-size:30rpx;
+		text-align:center;
+		margin:50rpx auto;
+		text-decoration: underline;
+		padding-bottom:20rpx;
+	}
+	.head_text{
+		font-size:26rpx;
+		color:999;
+		padding-left:30rpx;
+		margin-top:30rpx;
+	}
+	.content1{
+		width:630rpx;
+		border:1rpx solid green;
+		margin:30rpx auto;
+		padding:20rpx;
+		font-size:26rpx;
+	}
+	.btn{
+		color:#fff;
+		background:green;
+		width:630rpx;
+	}
+</style>
+<template>
+	<view class="rich">
+		<view class="head">rich-text</view>
+		<view class="head_text">通过HTML string渲染</view>
+		<view class="content1">
+			<text>{{text1}}</text>
+		</view>
+		<button class="btn" @tap="drawing1">渲染HTML</button>
+		<rich-text wx:if="{{isShow}}" nodes="{{content}}"></rich-text>
+		
+		<view class="head_text">通过节点渲染</view>
+		<view class="content1">
+			<text>{{text2}}</text>
+		</view>
+		<button class="btn" @tap="drawing2">渲染HTML</button>
+		<rich-text wx:if='{{isShow2}}' nodes="{{nodes}}"></rich-text>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  	text1:"<div class='div_class'>\n<h1>Title</h1>\n<p class='p'>Life is &nbsp;<i>like</i>&nbsp;a box of \n<b>&nbsp;chocolates</b>\n</p>\n</div>",
+  	text2:"nodes:[{\nname:'div',attrs:{\n class:'div_class',\n style:'line-height:60px;color:red;'\n},\n children:[{type:'text',\n text:'You naver know what you are gonna get.'\n}]\n}]",
+  	nodes: [{
+      name: 'div',
+      attrs: {
+        class: 'div_class',
+        style: 'line-height: 60px; color: red;'
+      },
+      children: [{
+        type: 'text',
+        text: "You naver know what you are gonna get."
+      }]
+    }],
+    isShow:false,
+    content:"",
+    isShow2:false,
+  };
+  computed = {};
+  methods = {
+	drawing1(){
+		this.content = this.text1;
+		this.isShow = true;
+	},
+	drawing2(){
+		this.isShow2 = true;
+	},
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

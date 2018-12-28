@@ -1,0 +1,53 @@
+<style lang="less">
+	.head{
+		color:#999;
+		font-size:30rpx;
+		text-align:center;
+		margin:50rpx auto;
+		text-decoration: underline;
+		padding-bottom:20rpx;
+	}
+	.item{
+		padding-left:30rpx;
+		margin-top:30rpx;
+	}
+</style>
+<template>
+	<view class='radio'>
+		<view class="head">radio</view>
+		<radio-group class="radio-group" bindchange="radioChange">
+			<label class="radio" wx:for="{{items}}" wx:key="index" index="index" item="item">
+				<view class="item">
+			        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+				</view>
+			</label>
+		</radio-group>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  	items: [
+      {name: 'USA', value: '美国'},
+      {name: 'CHN', value: '中国', checked: 'true'},
+      {name: 'BRA', value: '巴西'},
+      {name: 'JPN', value: '日本'},
+      {name: 'ENG', value: '英国'},
+      {name: 'TUR', value: '法国'},
+    ]
+  };
+  computed = {};
+  methods = {
+  	radioChange(e) {
+	    console.log('radio发生change事件，携带value值为：', e.detail.value)
+	}
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

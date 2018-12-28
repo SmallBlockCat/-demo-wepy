@@ -1,0 +1,31 @@
+<style lang="less">
+	.head{
+		color:#999;
+		font-size:30rpx;
+		text-align:center;
+		margin:50rpx auto;
+		text-decoration: underline;
+		padding-bottom:20rpx;
+	}
+</style>
+<template>
+	<view class="audio">
+		<view class="head">ad</view>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  };
+  computed = {};
+  methods = {
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

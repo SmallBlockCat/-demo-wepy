@@ -1,0 +1,54 @@
+<style lang="less">
+	.head{
+		color:#999;
+		font-size:30rpx;
+		text-align:center;
+		margin:50rpx auto;
+		text-decoration: underline;
+		padding-bottom:20rpx;
+	}
+	.head_text{
+		padding-left:30rpx;
+		font-size:30rpx;
+		color:#999;
+		margin:30rpx 0 20rpx;
+	}
+	.img{
+		width:100%;
+		text-align:center;
+	}
+	image{
+		width:630rpx;
+		margin:0 auto !important;
+		height:300rpx;
+	}
+</style>
+<template>
+	<view class="navigator">
+		<view class="head">image</view>
+		<view class="head_text">Local Image</view>
+		<view class="img">
+			<image mode="widthFix" src="../../img/rr.jpg"/>
+		</view>
+		<view class="head_text">Internet Image</view>
+		<view class="img">
+			<image mode="widthFix" src="http://www.sssyin.cn/malldemo/image/titleImg.jpg"/>
+		</view>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  };
+  computed = {};
+  methods = {
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

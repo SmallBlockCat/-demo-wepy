@@ -1,0 +1,32 @@
+<style lang="less">
+	.demo2{
+		
+	}
+</style>
+<template>
+	<view class="demo2">
+		<drag1></drag1>
+		<drag2></drag2>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+import drag1 from '../.././components/drag1';
+import drag2 from '../.././components/drag2';
+
+export default class Login extends wepy.page {
+  components = {
+  	drag1:drag1,
+  	drag2:drag2
+  };
+  data = {
+  };
+  computed = {};
+  methods = {
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

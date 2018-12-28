@@ -1,0 +1,71 @@
+<style lang="less">
+	.head{
+		color:#999;
+		font-size:30rpx;
+		text-align:center;
+		margin:50rpx auto;
+		text-decoration: underline;
+		padding-bottom:20rpx;
+	}
+	.section__title{
+	 padding-left:30rpx;	
+	}
+</style>
+<template>
+	<view class="slider">
+		<view class="head">slider</view>
+		<view class="section section_gap">
+		  <text class="section__title">设置step</text>
+		  <view class="body-view">
+		    <slider bindchange="slider2change" block-color="green" block-size="18" step="5"/>
+		  </view>
+		</view>
+		
+		<view class="section section_gap">
+		  <text class="section__title">显示当前value</text>
+		  <view class="body-view">
+		    <slider bindchange="slider3change" block-color="green" block-size="18" show-value/>
+		  </view>
+		</view>
+		
+		<view class="section section_gap">
+		  <text class="section__title">设置最小/最大值</text>
+		  <view class="body-view">
+		    <slider bindchange="slider4change" block-color="green" block-size="18" min="50" max="200" show-value/>
+		  </view>
+		</view>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+var pageData = {}
+for (var i = 1; i < 5; i++) {
+  (function (index) {
+    pageData['slider' + index + 'change'] = function(e) {
+      console.log('slider' + 'index' + '发生 change 事件，携带值为', e.detail.value)
+    }
+  })(i)
+}
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  };
+  computed = {};
+  methods = {
+  	slider2change(e){
+  		console.log(e)
+  	},
+  	slider3change(e){
+  		console.log(e)
+  	},
+  	slider4change(e){
+  		console.log(e)
+  	}
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

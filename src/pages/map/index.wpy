@@ -1,0 +1,111 @@
+<style lang="less">
+	.head{
+		color:#999;
+		font-size:30rpx;
+		text-align:center;
+		margin:50rpx auto;
+		text-decoration: underline;
+		padding-bottom:20rpx;
+	}
+	button{
+		width:630rpx;
+		margin:30rpx auto;	
+	}
+</style>
+<template>
+	<view class="audio">
+		<view class="head">camera</view>
+		<map id="map" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap"
+		  markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location
+		  style="width: 100%; height: 300px;" enable-3D="{{enable}}" show-compass="{{compass}}"
+		  enable-overlooking="{{overlooking}}" enable-rotate="{{rotate}}" enable-zoom='{{zoom}}' enable-scroll="{{scroll}}"
+		  ></map>
+		<button type="primary" @tap="openEnable">启用3D效果</button> 
+		<button type="primary" @tap="showCompass">显示指南针</button> 
+		<button type="primary" @tap="enableOverlooking">开启俯视支持</button> 
+		<button type="primary" @tap="enableRotate">开启旋转支持</button> 
+		<button type="primary">绘制多边形</button> 
+		<button type="primary" @tap="enableZoom">开启缩放支持</button> 
+		<button type="primary" @tap="enableScroll">开启拖动支持</button> 
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  	 markers: [{
+      iconPath: '../../img/dingwei.png',
+      id: 0,
+      latitude: 23.099994,
+      longitude: 113.324520,
+      width: 50,
+      height: 50
+    }],
+    polyline: [{
+      points: [{
+        longitude: 113.3245211,
+        latitude: 23.10229
+      }, {
+        longitude: 113.324520,
+        latitude: 23.21229
+      }],
+      color: '#FF0000DD',
+      width: 2,
+      dottedLine: true
+    }],
+    controls: [{
+      id: 1,
+      iconPath: '../../img/map.png',
+      position: {
+        left: 0,
+        top: 300 - 50,
+        width: 50,
+        height: 50
+      },
+      clickable: true
+    }],
+    enable:false,
+    compass:false,
+    overlooking:false,
+    rotate:false,
+    zoom:false,
+    scroll:false
+  };
+  computed = {};
+  methods = {
+  	regionchange(e) {
+	    console.log(e.type)
+	},
+	markertap(e) {
+	    console.log(e.markerId)
+	},
+	controltap(e) {
+	    console.log(e.controlId)
+	},
+	openEnable(){
+		this.enable = !this.enable;
+	},
+	showCompass(){
+		this.compass = !this.compass;
+	},
+	enableOverlooking(){
+		this.overlooking = !this.overlooking;
+	},
+	enableRotate(){
+		this.rotate = !this.rotate;
+	},
+	enableZoom(){
+		this.zoom = !this.zoom;
+	},
+	enableScroll(){
+		this.scroll = !this.scroll
+	}
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

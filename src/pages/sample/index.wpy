@@ -1,0 +1,35 @@
+<style lang="less">
+	.head{
+		color:#999;
+		font-size:30rpx;
+		text-align:center;
+		margin:50rpx auto;
+		text-decoration: underline;
+		padding-bottom:20rpx;
+	}
+</style>
+<template>
+	<view class="sample">
+		<view style="text-align:center"> {{title}} </view>
+		<view> 点击左上角返回回到之前页面 </view>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  	title:""
+  };
+  computed = {};
+  methods = {
+  };
+  onShow() {}
+  onLoad(options) {
+  	console.log(options)
+  	this.title = options.title
+  }
+}
+</script>

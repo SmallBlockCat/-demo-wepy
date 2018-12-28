@@ -1,0 +1,64 @@
+<style lang="less">
+	.head{
+		color:#999;
+		font-size:30rpx;
+		text-align:center;
+		margin:50rpx auto;
+		text-decoration: underline;
+		padding-bottom:20rpx;
+	}
+	.head_text{
+		padding-left:30rpx;
+		margin-bottom:30rpx;
+	}
+	.checkbox{
+		margin-left:30rpx;
+	}
+</style>
+<template>
+	<view class="button">
+		<view class="head">checkbox</view>
+		<view class="head_text">默认样式</view>
+		<label class="checkbox">
+			  <checkbox checked/>选中
+		</label>
+		<label class="checkbox">
+			  <checkbox/>未选中
+		</label>
+		
+		<checkbox-group bindchange="checkboxChange" style="margin-top:50rpx;">
+			<label class="checkbox" wx:for="{{items}}" wx:key="index" index="index" item="item">
+				<view style="padding-left:30rpx;">
+				   <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+				</view>
+			</label>
+		</checkbox-group>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  	items: [
+      {name: 'USA', value: '美国'},
+      {name: 'CHN', value: '中国', checked: 'true'},
+      {name: 'BRA', value: '巴西'},
+      {name: 'JPN', value: '日本'},
+      {name: 'ENG', value: '英国'},
+      {name: 'TUR', value: '法国'},
+    ]
+  };
+  computed = {};
+  methods = {
+  	checkboxChange: function(e) {
+	    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+	}
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>

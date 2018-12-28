@@ -1,0 +1,149 @@
+<style lang="less">
+	.label{
+		padding-left:30rpx;
+	}
+	.head{
+		color:#999;
+		font-size:30rpx;
+		text-align:center;
+		margin:50rpx auto;
+		text-decoration: underline;
+		padding-bottom:20rpx;
+	}
+	.label-1, .label-2{
+	    margin-bottom: 15px;
+	}
+	.label-1__text, .label-2__text {
+	    display: inline-block;
+	    vertical-align: middle;
+	}
+	
+	.label-1__icon {
+	    position: relative;
+	    margin-right: 10px;
+	    display: inline-block;
+	    vertical-align: middle;
+	    width: 18px;
+	    height: 18px;
+	    background: #fcfff4;
+	}
+	
+	.label-1__icon-checked {
+	    position: absolute;
+	    top: 3px;
+	    left: 3px;
+	    width: 12px;
+	    height: 12px;
+	    background: #1aad19;
+	}
+	
+	
+	.label-2__icon {
+	    position: relative;
+	    display: inline-block;
+	    vertical-align: middle;
+	    margin-right: 10px;
+	    width: 18px;
+	    height: 18px;
+	    background: #fcfff4;
+	    border-radius: 50px;
+	}
+	
+	.label-2__icon-checked {
+	    position: absolute;
+	    left: 3px;
+	    top: 3px;
+	    width: 12px;
+	    height: 12px;
+	    background: #1aad19;
+	    border-radius: 50%;
+	}
+	
+	.label-4_text{
+	    text-align: center;
+	    margin-top: 15px;
+	}
+</style>
+<template>
+	<view class="label">
+		<view class="head">label</view>
+		<view class="section section_gap">
+		<view class="section__title" style="margin-bottom:30rpx;">表单组件在label内</view>
+		<checkbox-group class="group" bindchange="checkboxChange">
+		  <view class="label-1" wx:for="{{checkboxItems}}" wx:key="index" index="index" item="item">
+		    <label>
+		        <checkbox value="{{item.name}}" checked="{{item.checked}}"></checkbox>
+		        <!--<view class="label-1__icon">
+		            <view class="label-1__icon-checked" style="opacity:{{item.checked ? 1: 0}}"></view>
+		        </view>-->
+		        <text class="label-1__text">{{item.value}}</text>
+		    </label>
+		  </view>
+		</checkbox-group>
+		</view>
+		
+		<view class="section section_gap">
+		<view class="section__title" style="margin-bottom:30rpx;">label用for标识表单组件</view>
+		<radio-group class="group" bindchange="radioChange">
+		  <view class="label-2" wx:for="{{radioItems}}" wx:key="index" index="index" item="item">
+		    <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
+		    <view class="label-2__icon">
+		        <view class="label-2__icon-checked" style="opacity:{{item.checked ? 1: 0}}"></view>
+		    </view>
+		    <label class="label-2__text" for="{{item.name}}"><text>{{item.name}}</text></label>
+		  </view>
+		</radio-group>
+		</view>
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+import apifunc from '@/api/index.js';
+
+export default class Login extends wepy.page {
+  components = {};
+  data = {
+  	 checkboxItems: [
+      {name: 'USA', value: '美国'},
+      {name: 'CHN', value: '中国', checked: 'true'},
+      {name: 'BRA', value: '巴西'},
+    ],
+    radioItems: [
+      {name: 'USA', value: '美国'},
+      {name: 'CHN', value: '中国', checked: 'true'},
+      {name: 'BRA', value: '巴西'},
+    ],
+    hidden: false
+  };
+  computed = {};
+  methods = {
+  	checkboxChange(e){
+	    var checked = e.detail.value
+	    var changed = {}
+	    for (var i = 0; i < this.data.checkboxItems.length; i ++) {
+	      if (checked.indexOf(this.data.checkboxItems[i].name) !== -1) {
+	        changed['checkboxItems['+i+'].checked'] = true
+	      } else {
+	        changed['checkboxItems['+i+'].checked'] = false
+	      }
+	    }
+	    this.setData(changed)
+	  },
+	  radioChange(e){
+	    var checked = e.detail.value
+	    var changed = {}
+	    for (var i = 0; i < this.data.radioItems.length; i ++) {
+	      if (checked.indexOf(this.data.radioItems[i].name) !== -1) {
+	        changed['radioItems['+i+'].checked'] = true
+	      } else {
+	        changed['radioItems['+i+'].checked'] = false
+	      }
+	    }
+	    this.setData(changed)
+	  }
+  };
+  onShow() {}
+  onLoad() {
+  }
+}
+</script>
